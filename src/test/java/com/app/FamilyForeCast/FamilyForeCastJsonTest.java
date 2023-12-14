@@ -18,7 +18,7 @@ public class FamilyForeCastJsonTest {
     @Test
     void cashCardSerializationTest() throws IOException {
 
-        CashCard cashCard = new CashCard(94L, 123.45);
+        CashCard cashCard = new CashCard(94L, 123.45, null);
         assertThat(json.write(cashCard)).isStrictlyEqualToJson("expected.json");
 
         assertThat(json.write(cashCard)).hasJsonPathNumberValue("@.id");

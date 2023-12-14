@@ -20,7 +20,9 @@ class FamilyForeCastApplicationTests {
 	@Test
 	void shouldReturnACashCardWhenDataIsSaved() {
 
-		ResponseEntity<String> response = restTemplate.getForEntity("/cashcards/94", String.class);
+		ResponseEntity<String> response = restTemplate
+				.withBasicAuth("admin", "test@1234")
+				.getForEntity("/cashcards/94", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
 		DocumentContext documentContext = JsonPath.parse(response.getBody());
@@ -37,7 +39,9 @@ class FamilyForeCastApplicationTests {
 
 	@Test
 	void shouldNotReturnACashCardWithAnUnknownId() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/cashcards/95", String.class);
+		ResponseEntity<String> response = restTemplate
+				.withBasicAuth("admin", "test@1234")
+				.getForEntity("/cashcards/95", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 		assertThat(response.getBody()).isBlank();
