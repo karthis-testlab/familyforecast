@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/cashcards")
-public class CashCardController {
+class CashCardController {
 
     private final CashCardRepository cashCardRepository;
 
